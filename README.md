@@ -53,3 +53,138 @@ Follow these steps to set up the project locally:
 1. Navigate to the `backend` directory:
    ```bash
    cd backend
+
+
+install dependencies:
+npm install
+Set up environment variables:
+
+Create a .env file in the backend directory.
+Add the following variables:
+env
+Copy code
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_secret_key
+
+
+Start the server:
+
+npm start
+
+The backend will run at http://localhost:5000.
+
+Frontend Setup
+Navigate to the frontend directory:
+
+
+cd frontend
+Install dependencies:
+
+npm install
+Start the frontend application:
+
+
+npm start
+The frontend will run at http://localhost:3000.
+
+Usage
+Open the application in your browser:
+
+Frontend: http://localhost:3000
+Backend API: http://localhost:5000/api
+Register a new user or log in with existing credentials.
+
+Based on the assigned role, access different parts of the application:
+
+Admin: Access the admin panel to manage roles and permissions.
+User: Access general user resources.
+
+
+Project Structure
+Backend
+
+backend/
+├── controllers/
+│   ├── authController.js
+│   ├── userController.js
+├── models/
+│   ├── User.js
+│   ├── Role.js
+├── routes/
+│   ├── authRoutes.js
+│   ├── userRoutes.js
+├── middlewares/
+│   ├── authMiddleware.js
+│   ├── roleMiddleware.js
+├── server.js
+└── .env
+
+
+
+Frontend
+
+frontend/
+├── src/
+│   ├── components/
+│   │   ├── Navbar.jsx
+│   │   ├── LoginForm.jsx
+│   │   ├── RegisterForm.jsx
+│   ├── pages/
+│   │   ├── Dashboard.jsx
+│   │   ├── AdminPanel.jsx
+│   ├── App.js
+│   ├── index.js
+└── .env
+
+
+API Documentation
+
+
+Authentication Endpoints
+Register: POST /api/auth/register
+
+Request Body:
+
+
+{
+  "username": "example",
+  "password": "password123",
+  "role": "User"
+}
+Response:
+
+{
+  "message": "User registered successfully"
+}
+Login: POST /api/auth/login
+
+Request Body:
+
+{
+  "username": "example",
+  "password": "password123"
+}
+Response:
+
+{
+  "token": "jwt_token_here"
+}
+Role-Based Endpoints
+Access Admin Resource: GET /api/admin/resource
+
+Headers: Authorization: Bearer <token>
+Response:
+
+{
+  "message": "Admin resource accessed"
+}
+Access User Resource: GET /api/user/resource
+
+Headers: Authorization: Bearer <token>
+Response:
+
+{
+  "message": "User resource accessed"
+}
+
